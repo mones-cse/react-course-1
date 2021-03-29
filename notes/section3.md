@@ -105,18 +105,54 @@ const person = (props) => {
 
 ![Alt text](note-images/props-learning-card.png?raw=true "component learning card")
 
-- we can put our content into our component from outside, not only by passing props like this but if we want to pass some
-  structured html content also by placing it between the opening and closing tag and accessing it with props.children.
+- we can put our content into our component from outside, not only by passing props like this but if we want to pass
+  some structured html content also by placing it between the opening and closing tag and accessing it with
+  props.children.
 
 ### 37. Understanding the "children" Prop
 
 ### 38. Understanding & Using State
 
+-State can be changed and if it changes and that's the special thing about it and it only works on that state property,
+if it changes, it will lead React to re-render our DOM or to update the DOM.
+
 ### 39. Props & State
+- `state` is a fixed keyword but `props` are not 
+- Only changes in props and/ or state trigger React to re-render.
+- props allow us to pass data from a parent (wrapping) component to a child (embedded) component.
+
+```js
+//AllPosts
+const posts = () => {
+    return (
+        <div>
+            <Post title="My first Post"/>
+        </div>
+    );
+}
+```
+
+```js
+//post
+const post = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+        </div>
+    );
+}
+```
+
+- Whilst props allow us to pass data down the component tree (and hence trigger a UI update), state is used to change
+  the component from within. Changes to state also trigger a UI update.
 
 ### 40. Handling Events with Methods
-
+- use `onClick` instead of `onclick`
+- typically, we add handler like `switchNameHandler`
+- dont add parenthesis `()` inside jsx
 ### 41. To Which Events Can You Listen?
+- react supported event [list](https://reactjs.org/docs/events.html#supported-events)
+- course suggested event [list](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8124210#questions)
 
 ### 42. Manipulating the State
 
