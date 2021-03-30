@@ -153,17 +153,37 @@ const post = (props) => {
 ### 41. To Which Events Can You Listen?
 - react supported event [list](https://reactjs.org/docs/events.html#supported-events)
 - course suggested event [list](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8124210#questions)
+- because we use arrow function there is no problem of `this` keyword 
+```js
+  changeNameHandler=() =>{
+      this.setState({
+        name:'Monesul Haque',
+        age:30
+      })
+  }
+```
+- just use this.changeNameHandler. dont use (). if we use () then it will call during the first page loading time
+``` js
+    <button onClick={this.changeNameHandler}>Change name</button>
+```  
 
 ### 42. Manipulating the State
+- in order to update `state` data we need to use `setState` function
+- setstate do not replace state data but update particular properties value.
+![Alt text](note-images/state-learning-card.png?raw=true "component learning card")
 
 ### 43. Function Components Naming
+- USE `App` instead of `app`
 
 ### 44. Using the useState() Hook for State Manipulation
+- When we are using React hooks, function that update state does not merge whatever we pass to it with the old state, instead it replaces the old state with it
 
+![Alt text](note-images/use-state-learning-card.png?raw=true "component learning card")
 ### 45. Stateless vs Stateful Components
-
+- previously state can be only managed in class based component but now state can be manage in function based component.  
 ### 46. Passing Method References Between Components
-
+*This one needs special care* 
+- we can pass method as properties from parent component child component
 ### 47. Adding Two Way Binding
 
 ### 48. Adding Styling with Stylesheets
