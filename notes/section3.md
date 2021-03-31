@@ -184,11 +184,82 @@ const post = (props) => {
 ### 46. Passing Method References Between Components
 *This one needs special care* 
 - we can pass method as properties from parent component child component
+- following code shows how to pass method that does not need any arguments 
+```jsx
+// static method call 
+import React, { Component } from 'react'
+
+const Child = (props)=>{
+  return(<div onClick ={props.changeStaticName }>Click Here</div>)
+}
+
+class App extends Component{
+  state = {personName:'Someone'}
+  staticChangePersonName = ()=> this.setState({personName:'Some One  Special'})
+  
+  render(){
+    return(
+      <div>
+        <p>You are looking for {this.state.personName}</p>
+        <Child changeStaticName={this.staticChangePersonName}/>
+      </div>
+    )
+  }
+}
+export default App
+```
+- following code shows how to pass a method that accept arguments 
+  - bind method is [efficient](https://stackoverflow.com/questions/50375440/binding-vs-arrow-function-for-react-onclick-event/56311840) than arrow function  
+```jsx
+import React, { Component } from 'react'
+
+const Child = (props)=>{
+  return(<input type="text" value={props.value} onChange={e=>props.changeName(e.target.value)}/>)
+}
+
+class App extends Component{
+  state = {personName:'Nobody'}
+  changePersonName = (newName)=> this.setState({personName:newName})
+  render(){
+    return(
+      <div>
+        <p>You are looking for {this.state.personName}</p>
+        <p onClick={this.changePersonName.bind(this,'Jon')}>your are looking for <i>jon</i> using bind method</p>
+        <p onClick={()=>this.changePersonName('Sam')}>your are looking for <i>Sam</i> using arrow function method</p>
+        <Child value={this.state.personName}  changeName={this.changePersonName}/>
+      </div>
+    )
+  }
+}
+export default App
+```
 ### 47. Adding Two Way Binding
 
 ### 48. Adding Styling with Stylesheets
+-remember css can be global so it is wise to add css class to any component's top level like add `Person` class to top level of `Person` component
+- using webpack we can import css to jsx file
+- webpack also add some prefixing for different browser
+- there are 2 way to styling 
+  - one stylesheet
+  - two inline css
 
 ### 49. Working with Inline Styles
+```jsx
+import React, { Component } from 'react'
+
+class App extends Component {
+  render() {
+    const pStyle = { color: "red" }
+    const bodyStyle = { backgroundColor: "#ccc", textAlign: "center" }
+    return (
+      <div style={bodyStyle}>
+        <p style={pStyle}>Paragraph one</p>
+      </div>
+    )
+  }
+}
+export default App
+```
 
 ### 50. [OPTIONAL] Assignment Solution
 
