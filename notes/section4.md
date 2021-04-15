@@ -48,4 +48,5 @@
 #### 62. [OPTIONAL] Assignment Solution
 
 #### 63. Useful Resources & Links
-
+* [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
+* [Lists & Keys](https://reactjs.org/docs/lists-and-keys.html)
